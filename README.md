@@ -34,7 +34,17 @@ The program is inspired by SHA-1 hash function.
 ![](pic7.png)  
 
 ![](pic8.png)  
-Konstitucija.txt failą debug mode užhashino per 3,4 s
+Konstitucija.txt failą debug mode užhashino per 3,4 s  
+  
+![](pic9.png)  
+20000 10 
+length 20000 
+100 length 
+20000 500 length 
+20000 1000 length
+![](pic10.png)  
+
+
 
 # CHANGELOG
 - V0.1: Sukurtas Hashavimas, inputas/outputas. Padarytas hashavimo testavimas.
