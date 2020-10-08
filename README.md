@@ -29,6 +29,9 @@ The program is inspired by SHA-1 hash function.
   
 ![](pic5.png)  
 ![](pic6.png)  
-4 sutapimai (4 matches)   
+4 sutapimai (4 matches)  
+  
+![](pic7.png)  
+
 # CHANGELOG
 - V0.1: Sukurtas Hashavimas, inputas/outputas.
