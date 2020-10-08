@@ -6,7 +6,7 @@ The program is inspired by SHA-1 hash function.
 ////   
   
 - Maišos funkcijos veikimas: (Hash function pseudo-code)
-  begin  
+ ` begin  
     input ID[5] // 5x 32 bit binary codes  
     input fraze  
     fraze -> bits  
@@ -17,7 +17,7 @@ The program is inspired by SHA-1 hash function.
     turning ID -> hex  
     output ID  
   end  
-    
+    `
  - 
 # CHANGELOG
 - V0.1: Sukurtas Hashavimas, inputas/outputas.
