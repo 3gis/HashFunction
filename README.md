@@ -19,9 +19,14 @@ The program is inspired by SHA-1 hash function.
   `end`
   
 # Photos
-![testas](pic1.png)  
+![](pic1.png)  
 ![](pic2.png)  
+24 sutapimai (24 matches)
 ![](pic3.png)  
 ![](pic4.png)  
+28 sutapimai (28 matches)
+![](pic5.png)  
+![](pic6.png)
+4 sutapimai (4 matches)
 # CHANGELOG
 - V0.1: Sukurtas Hashavimas, inputas/outputas.
