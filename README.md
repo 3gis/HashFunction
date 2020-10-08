@@ -1,6 +1,6 @@
 # Hash Funkcija
  Ši programa užhašuoja duotą tekstą (galima tekstą paduoti per konsolę, įrašyti ranka arba skaityti iš failo). Programa yra daryta pagal SHA-1 hash funkcija. Panaudojamos XOR, AND, OR, NOT funkcijos ant bitų eilučių.  
-////
+////  
 The program hashes the input (can be given by console, on-runtime or read from file).  
 The program is inspired by SHA-1 hash function.  
 ////   
