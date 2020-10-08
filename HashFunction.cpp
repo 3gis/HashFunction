@@ -3,6 +3,7 @@
 #include <bitset>
 #include <sstream>
 #include <fstream>
+#include <chrono>
 
 using std::cout;
 using std::cin;
@@ -10,6 +11,7 @@ using std::string;
 using std::bitset;
 using std::endl;
 using std::ifstream;
+using std::ofstream;
 
 string popas(string hex);
 string xoras(string a,string b);
@@ -18,12 +20,17 @@ string notas(string a);
 string oras(string a, string b);
 
 int main(int argc, char *argv[]){
-    string fraze = "dsgdflugkfdsrdtyfgukhjgfxdzsrtybkjherwaetyjhgerdsgdflugkfdsrdtyfgukhjgfxdzsrtybkjherwaetyjhgerdsgdflugkfdsrdtyfgukhjgfxdzsrtybkjherwaetyjhgersdfsgdadfgdhgfsahfgdadghfgjhfdsaeahfjgfdreQWRTYUTRTEYRUiUOYDTSRAESDHFGJKGFDSAsFGHJKGFZDzXMBVFZDFXGCHJBVHGZFSDaFGJHKFDSFGDJHfhgjkfdsgdfhkjfdsfdghjhgfsdswafghrwafsdgdfd";
+    auto start = std::chrono::high_resolution_clock::now();
+    string fraze;
     string ID[5]={"01000100111110010111000000110001","11010000010010000000000000000001","01000100111110010111011110110001","11011111110010000000011000111101","11010100111110010111000100110001"};
     string hex;
+    bool debug = false;
     bool getout = true;
+    bool debugas = false;
     string pavadinimas;
     ifstream inFile;
+    ofstream ff;
+    ff.open("log.txt", std::fstream::app);
     std::stringstream strStream;
     int a = 0;
     if(argc > 1){ //uzrasyta per command line
@@ -64,13 +71,27 @@ int main(int argc, char *argv[]){
             cout << "Iveskite norima teksta uzhashuoti: ";
             cin >> fraze;
             break;
+        case '*':
+            debugas = true;
+            cout << "... DEBUGINIMO MODAS ... JEI NETYCIA IEJOTE ISJUNKITE IR IJUNKITE \n";
+            debug = true;
+            getout = false;
+            cout << "Iveskite failo pavadinima: ";
+            cin >> pavadinimas;
+            start = std::chrono::high_resolution_clock::now();
+            inFile.open(pavadinimas + ".txt");
+            debug:
+            getline(inFile,fraze);
+            if(inFile.eof())
+                debug = false;
+            break;
         default:
             cout << "\n!!! Y y arba N n !!! \n";
             break;
         }
         }
 
-            cout << "\nHashas: ";
+            cout << "\nHashas: ";///
 
     }//rasyti ranka
         for(int i = 0; i<fraze.size();i++){
@@ -102,38 +123,33 @@ int main(int argc, char *argv[]){
             zodziai[h]+=zodziai[h][0];
             zodziai[h].erase(zodziai[h].begin(),zodziai[h].begin()+1);
             //cout << zodziai[h] << endl;
-        }/*
-        string tikrihexai[5];
-        for(int j = 0; j<5;j++){
-            int maxt = -1;
-            int indeksas = 0;
-            for(int i = 0; i<80;i++){
-                if(zodziai[i]!="NULL"){
-                    int x = taskai(ID[j],zodziai[i]);
-                    if(maxt < x){
-                        maxt = x;
-                        indeksas = i;
-                    }
-                }
-            }
-            tikrihexai[j]=zodziai[indeksas];
-            zodziai[indeksas]="NULL";
-            bitset<32> set(tikrihexai[j]);
-            */
+        }
             for(int i = 0; i<5;i++){
                 for(int j = 0; j<80;j++){
-                    if(i%2==0)
+                    if(i%2==0){
                         ID[i]=andas(ID[i],notas(zodziai[j]));
+                        ID[i]+=ID[i][0];
+                        ID[i].erase(ID[i].begin(),ID[i].begin()+1);
+                    }
                     else
                         ID[i]=oras(notas(ID[i]),zodziai[j]);
-                    ID[i]+=ID[i][0];
-                    ID[i].erase(ID[i].begin(),ID[i].begin()+1);
+
                 }
             }
             for(int i = 0; i<5;i++){
             bitset<32> set(ID[i]);
-            cout << std::hex << set.to_ulong();
+            ff << std::hex << set.to_ulong();
+            cout << std::hex << set.to_ulong();///
             }
+    ff << "\n";
+    cout << "\n";///
+    if(debug == true)
+        goto debug;
+    if(debugas == true){
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> diff = end - start;
+    cout << "=== Hashavimas uztruko: " << diff.count() << "\n";
+    }
 return 0;
 }
 
