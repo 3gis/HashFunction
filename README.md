@@ -41,7 +41,7 @@ Konstitucija.txt failą debug mode užhashino per 3,4 s
 length 20000 
 100 length 
 20000 500 length 
-20000 1000 length
+20000 1000 length  
 ![](pic10.png)  
 
 
