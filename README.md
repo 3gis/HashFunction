@@ -17,6 +17,6 @@ The program is inspired by SHA-1 hash function.
     `turning ID -> hex`  
     `output ID`  
   `end`
- - 
+  
 # CHANGELOG
 - V0.1: Sukurtas Hashavimas, inputas/outputas.
