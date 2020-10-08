@@ -48,4 +48,4 @@ length 20000
 
 # CHANGELOG
 - V0.1: Sukurtas Hashavimas, inputas/outputas. Padarytas hashavimo testavimas. Uzhashintas konstitucija.txt failas bei 80000 eiluciu tikrinimui.
-- V0.1.1: Hashai buvo 40 bitų nors turėjo būti 32 bitų. Pakeista į 32 bitų.
+- V0.1.1: Pastaba: hashai yra 40 simbolių ilgio
