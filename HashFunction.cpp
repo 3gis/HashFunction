@@ -91,7 +91,7 @@ int main(int argc, char *argv[]){
         }
         }
 
-            cout << "\nHashas: ";///
+            ///cout << "\nHashas: ";   ///
 
     }//rasyti ranka
         for(int i = 0; i<fraze.size();i++){
@@ -103,7 +103,7 @@ int main(int argc, char *argv[]){
             a++;
         }
         for(int i = 0; i<56;i++, hex+="0");
-        hex += bitset<8>(fraze.size()*8).to_string();
+        hex += bitset<32>(fraze.size()*8).to_string();
         int dydis = hex.size()/32;
         string hexiukai[dydis];
         string zodziai[80];
@@ -139,10 +139,10 @@ int main(int argc, char *argv[]){
             for(int i = 0; i<5;i++){
             bitset<32> set(ID[i]);
             ff << std::hex << set.to_ulong();
-            cout << std::hex << set.to_ulong();///
+            ////cout << std::hex << set.to_ulong();///
             }
     ff << "\n";
-    cout << "\n";///
+    ///cout << "\n";///
     if(debug == true)
         goto debug;
     if(debugas == true){
