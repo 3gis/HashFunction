@@ -47,4 +47,4 @@ length 20000
 
 
 # CHANGELOG
-- V0.1: Sukurtas Hashavimas, inputas/outputas. Padarytas hashavimo testavimas.
+- V0.1: Sukurtas Hashavimas, inputas/outputas. Padarytas hashavimo testavimas. Uzhashintas konstitucija.txt failas bei 80000 eiluciu tikrinimui.
