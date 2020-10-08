@@ -1,19 +1,30 @@
 #include <iostream>
 #include <string>
 #include <bitset>
+#include <sstream>
+#include <fstream>
+
 using std::cout;
 using std::cin;
 using std::string;
 using std::bitset;
 using std::endl;
+using std::ifstream;
 
 string popas(string hex);
 string xoras(string a,string b);
-int taskai(string a, string b);
+string andas(string a, string b);
+string notas(string a);
+string oras(string a, string b);
+
 int main(int argc, char *argv[]){
-    string fraze = "a";
+    string fraze = "dsgdflugkfdsrdtyfgukhjgfxdzsrtybkjherwaetyjhgerdsgdflugkfdsrdtyfgukhjgfxdzsrtybkjherwaetyjhgerdsgdflugkfdsrdtyfgukhjgfxdzsrtybkjherwaetyjhgersdfsgdadfgdhgfsahfgdadghfgjhfdsaeahfjgfdreQWRTYUTRTEYRUiUOYDTSRAESDHFGJKGFDSAsFGHJKGFZDzXMBVFZDFXGCHJBVHGZFSDaFGJHKFDSFGDJHfhgjkfdsgdfhkjfdsfdghjhgfsdswafghrwafsdgdfd";
     string ID[5]={"01000100111110010111000000110001","11010000010010000000000000000001","01000100111110010111011110110001","11011111110010000000011000111101","11010100111110010111000100110001"};
     string hex;
+    bool getout = true;
+    string pavadinimas;
+    ifstream inFile;
+    std::stringstream strStream;
     int a = 0;
     if(argc > 1){ //uzrasyta per command line
         for(int i = 1; i<argc;i++){
@@ -21,14 +32,52 @@ int main(int argc, char *argv[]){
             fraze+=" ";
         }
     }
-    else{ //rasyti ranka
+    else{
+        char ats;
+        while(getout){
+        cout << "Skaityti is failo? (Y/N)";
+        cin >> ats;
+            switch(ats){
+        case 'Y':
+            getout = false;
+            cout << "Iveskite failo pavadinima: ";
+            cin >> pavadinimas;
+            inFile.open(pavadinimas + ".txt");
+            strStream << inFile.rdbuf();
+            fraze = strStream.str();
+            break;
+        case 'y':
+            getout = false;
+            cout << "Iveskite failo pavadinima: ";
+            cin >> pavadinimas;
+            inFile.open(pavadinimas + ".txt");
+            strStream << inFile.rdbuf();
+            fraze = strStream.str();
+            break;
+        case 'N':
+            getout = false;
+            cout << "Iveskite norima teksta uzhashuoti: ";
+            cin >> fraze;
+            break;
+        case 'n':
+            getout = false;
+            cout << "Iveskite norima teksta uzhashuoti: ";
+            cin >> fraze;
+            break;
+        default:
+            cout << "\n!!! Y y arba N n !!! \n";
+            break;
+        }
+        }
+
+            cout << "\nHashas: ";
+
+    }//rasyti ranka
         for(int i = 0; i<fraze.size();i++){
             hex += bitset<8>(fraze.c_str()[i]).to_string();
-           // hex[i] = fraze.c_str()[i];
         }
         hex += "1";
         while(hex.size()%448!=0){
-            //cout << hex.size()%(512-fraze.size()*8) << endl;
             hex+="0";
             a++;
         }
@@ -52,8 +101,8 @@ int main(int argc, char *argv[]){
             zodziai[h]=xoras(xoras(xoras(hexiukai[k],hexiukai[p]),hexiukai[j]),hexiukai[i]);
             zodziai[h]+=zodziai[h][0];
             zodziai[h].erase(zodziai[h].begin(),zodziai[h].begin()+1);
-            cout << zodziai[h] << endl;
-        }
+            //cout << zodziai[h] << endl;
+        }/*
         string tikrihexai[5];
         for(int j = 0; j<5;j++){
             int maxt = -1;
@@ -70,17 +119,21 @@ int main(int argc, char *argv[]){
             tikrihexai[j]=zodziai[indeksas];
             zodziai[indeksas]="NULL";
             bitset<32> set(tikrihexai[j]);
+            */
+            for(int i = 0; i<5;i++){
+                for(int j = 0; j<80;j++){
+                    if(i%2==0)
+                        ID[i]=andas(ID[i],notas(zodziai[j]));
+                    else
+                        ID[i]=oras(notas(ID[i]),zodziai[j]);
+                    ID[i]+=ID[i][0];
+                    ID[i].erase(ID[i].begin(),ID[i].begin()+1);
+                }
+            }
+            for(int i = 0; i<5;i++){
+            bitset<32> set(ID[i]);
             cout << std::hex << set.to_ulong();
-        }
-        /*cout << hex << endl;
-        cout << a << endl;
-        cout << hex.size() << endl;*/
-       /* if(fraze.size() < 256){
-        for(int i = 512-fraze.size())
-            cout << "////\n";
-            cout << hex << endl;
-        }*/
-    }
+            }
 return 0;
 }
 
@@ -98,12 +151,32 @@ string xoras(string a,string b){
     }
     return ats;
 }
-int taskai(string a, string b){
-    int taskas=0;
-    for(int i = 0; i < 32;i++){
-        if(a[i]!=b[i]) taskas+=3;
-        else taskas+=1;
+string andas(string a, string b){
+    string ats;
+    for(int i = 0; i < 32; i++){
+        if(a[i]=='1' && b[i]=='1' || a[i]=='0' && b[i]=='0' )
+            ats+="1";
+        else ats+="0";
     }
-    return taskas;
+    return ats;
+}
+string notas(string a){
+    string ats;
+    for(int i = 0; i < 32; i++){
+        if(a[i]=='1')
+            ats+="0";
+        else ats+="1";
+    }
+    return ats;
+}
+string oras(string a, string b){
+    string ats;
+    for(int i = 0; i < 32; i++){
+        if(a[i]=='1' || b[i]=='1')
+            ats+="1";
+        else ats+="0";
+    }
+    return ats;
+
 }
 
