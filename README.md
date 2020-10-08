@@ -18,5 +18,10 @@ The program is inspired by SHA-1 hash function.
     `output ID`  
   `end`
   
+# Photos
+![](pic1.png)  
+![](pic2.png)  
+![](pic3.png)  
+![](pic4.png)  
 # CHANGELOG
 - V0.1: Sukurtas Hashavimas, inputas/outputas.
