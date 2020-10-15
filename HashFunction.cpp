@@ -20,6 +20,7 @@ string notas(string a);
 string oras(string a, string b);
 
 int main(int argc, char *argv[]){
+    start:
     auto start = std::chrono::high_resolution_clock::now();
     string fraze;
     string ID[5]={"01000100111110010111000000110001","11010000010010000000000000000001","01000100111110010111011110110001","11011111110010000000011000111101","11010100111110010111000100110001"};
@@ -91,7 +92,7 @@ int main(int argc, char *argv[]){
         }
         }
 
-            ///cout << "\nHashas: ";   ///
+           /// cout << "\nHashas: ";   ///
 
     }//rasyti ranka
         for(int i = 0; i<fraze.size();i++){
@@ -103,7 +104,7 @@ int main(int argc, char *argv[]){
             a++;
         }
         for(int i = 0; i<56;i++, hex+="0");
-        hex += bitset<32>(fraze.size()*8).to_string();
+        hex += bitset<8>(fraze.size()*8).to_string();
         int dydis = hex.size()/32;
         string hexiukai[dydis];
         string zodziai[80];
@@ -137,9 +138,11 @@ int main(int argc, char *argv[]){
                 }
             }
             for(int i = 0; i<5;i++){
+            if(ID[i][0]=='0')
+                ID[i][0]='1';
             bitset<32> set(ID[i]);
             ff << std::hex << set.to_ulong();
-            ////cout << std::hex << set.to_ulong();///
+            ///cout << std::hex << set.to_ulong();///
             }
     ff << "\n";
     ///cout << "\n";///
@@ -150,7 +153,27 @@ int main(int argc, char *argv[]){
     std::chrono::duration<double> diff = end - start;
     cout << "=== Hashavimas uztruko: " << diff.count() << "\n";
     }
-return 0;
+
+
+
+
+char ats;
+    cout << "Baigti darba? (Y/N)";
+        cin >> ats;
+            switch(ats){
+        case 'Y':
+            return 0;
+            break;
+        case 'y':
+            return 0;
+            break;
+        case 'N':
+            goto start;
+            break;
+        case 'n':
+            goto start;
+            break;
+        }
 }
 
 string popas(string hex){
