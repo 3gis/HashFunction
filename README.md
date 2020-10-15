@@ -7,7 +7,7 @@ The program is inspired by SHA-1 hash function.
   
 - Maišos funkcijos veikimas: (Hash function pseudo-code)  
   `begin`   
-    `input ID[5] // 5x 32 bit binary codes`  
+    `input ID[5] // 5x 32 bit FIXED binary codes`  
     `input fraze`  
     `fraze -> bits`  
     `fraze filled up to mod 512 bits with '0' `  
