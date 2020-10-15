@@ -17,7 +17,7 @@ The program is inspired by SHA-1 hash function.
     `For every i < 5 {  
     `   IF ID[i][0] is '0' turn it into '1'
     ` }  `
-    `turning ID -> hex`  
+    `turning ID -> 160 bit -> hex`  
     `output ID`  
   `end`
   
