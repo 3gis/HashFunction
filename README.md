@@ -5,7 +5,7 @@ The program hashes the input (can be given by console, on-runtime or read from f
 The program is inspired by SHA-1 hash function.  
 ////   
   
-- Maišos funkcijos veikimas: (Hash function pseudo-code)
+- Maišos funkcijos veikimas: (Hash function pseudo-code)  
   `begin`   
     `input ID[5] // 5x 32 bit binary codes`  
     `input fraze`  
