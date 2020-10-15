@@ -5,15 +5,18 @@ The program hashes the input (can be given by console, on-runtime or read from f
 The program is inspired by SHA-1 hash function.  
 ////   
   
-- Maišos funkcijos veikimas: (Hash function pseudo-code)
+- Maišos funkcijos veikimas: (Hash function pseudo-code)  
   `begin`   
     `input ID[5] // 5x 32 bit binary codes`  
     `input fraze`  
     `fraze -> bits`  
-    `fraze filled up to mod 512 bits with 0`  
+    `fraze filled up to mod 512 bits with '0' `  
     `XOR Step-loop function to create 80 words (32 bit lines)`  
     `Left shifting the words (transfering first symbol into the end)`   
     `modifying ID with 80 words using AND, OR and NOT functions`  
+    `For every i < 5 {  
+    `   IF ID[i][0] is '0' turn it into '1'
+    ` }  `
     `turning ID -> hex`  
     `output ID`  
   `end`
@@ -48,4 +51,3 @@ length 20000
 
 # CHANGELOG
 - V0.1: Sukurtas Hashavimas, inputas/outputas. Padarytas hashavimo testavimas. Uzhashintas konstitucija.txt failas bei 80000 eiluciu tikrinimui.
-- V0.1.1: Pastaba: hashai yra 40 simbolių ilgio
