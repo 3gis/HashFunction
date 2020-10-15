@@ -63,7 +63,14 @@ length 20000
 
 ![](pic15.png)  
 
+# IŠVADOS  
 
+Strengths:  
+- Pasikartojančių (vienodų) hashu nebuvo aptikta.
+
+Weaknesses:  
+- 40-45% simbolių pasikartoja, kai skiriasi tik 1 raidė HEX LYGMENYJE.  
+- 69-71% bitų pasikartoja, kai skiriasi tik 1 raidė Binary lygmenyje.
 
 
 
